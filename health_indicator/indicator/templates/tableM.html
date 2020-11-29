@@ -1,0 +1,91 @@
+<head>
+<title>table</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src = "js/tab.js"></script>
+<body ng-app="myapp" ng-controller="ListController">     
+     <div class="row" ng-hide="!personalDetails.length">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" ng-model="selectedAll" ng-click="checkAll()" /></th>
+                            <th>Indicator</th>
+                            <th>Day1</th>
+                            <th>Day2</th>
+                            <th>Day3</th>
+                            <th>Day4</th>
+                            <th>Day5</th>
+                            <th>Day6</th>
+                            <th>Day7</th>
+                            <th>Day8</th>
+                            <th>Day9</th>
+                            <th>Day10</th>
+                            <th>Day11</th>
+                            <th>Day12</th>
+                            <th>Day13</th>
+                            <th>Day14</th>
+                            <th>Day15</th>
+                            <th>Day16</th>
+                            <th>Day17</th>
+                            <th>Day18</th>
+                            <th>Day19</th>
+                            <th>Day20</th>
+                            <th>Day21</th>
+                            <th>Day22</th>
+                            <th>Day23</th>
+                            <th>Day24</th>
+                            <th>Day25</th>
+                            <th>Day26</th>
+                            <th>Day27</th>
+                            <th>Day28</th>
+                            <th>Day29</th>
+                            <th>Day30</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="personalDetail in personalDetails">
+                            <td>
+                                <input type="checkbox" ng-model="personalDetail.selected"/></td>
+                            <td>{{personalDetail.indicator}}</td>
+                            <td>{{personalDetail.Day1}}</td>
+                            <td>{{personalDetail.Day2}}</td>
+                            <td>{{personalDetail.Day3}}</td>
+                            <td>{{personalDetail.Day4}}</td>
+                            <td>{{personalDetail.Day5}}</td>
+                            <td>{{personalDetail.Day6}}</td>
+                            <td>{{personalDetail.Day7}}</td>
+                            <td>{{personalDetail.Day8}}</td>
+                            <td>{{personalDetail.Day9}}</td>
+                            <td>{{personalDetail.Day10}}</td>
+                            <td>{{personalDetail.Day11}}</td>
+                            <td>{{personalDetail.Day12}}</td>
+                            <td>{{personalDetail.Day13}}</td>
+                            <td>{{personalDetail.Day14}}</td>
+                            <td>{{personalDetail.Day15}}</td>
+                            <td>{{personalDetail.Day16}}</td>
+                            <td>{{personalDetail.Day17}}</td>
+                            <td>{{personalDetail.Day18}}</td>
+                            <td>{{personalDetail.Day19}}</td>
+                            <td>{{personalDetail.Day20}}</td>
+                            <td>{{personalDetail.Day21}}</td>
+                            <td>{{personalDetail.Day22}}</td>
+                            <td>{{personalDetail.Day23}}</td>
+                            <td>{{personalDetail.Day24}}</td>
+                            <td>{{personalDetail.Day25}}</td>
+                            <td>{{personalDetail.Day26}}</td>
+                            <td>{{personalDetail.Day27}}</td>
+                            <td>{{personalDetail.Day28}}</td>
+                            <td>{{personalDetail.Day29}}</td>
+                            <td>{{personalDetail.Day30}}</td>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</body>

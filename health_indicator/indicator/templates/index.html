@@ -1,0 +1,175 @@
+<html>
+<head>
+  {% load staticfiles %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <link rel="stylesheet" href="{% static "css/card.css" %}">
+
+    <link href="https://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    
+    <script src="https://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+    
+    <script src="https://code.ionicframework.com/contrib/ionic-contrib-swipecards/ionic.swipecards.js?v=5"></script>
+<!-- ########################################################## -->
+<!-- ##################################################################### -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-touch.min.js"></script>
+    <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn3.devexpress.com/jslib/17.2.5/js/dx.all.js"></script>
+<!-- ##########################      -->
+    <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/ui-bootstrap-tpls.js' %}"></script>
+<!-- ############################# -->
+
+    <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+    
+    <script src="https://code.ionicframework.com/contrib/ionic-contrib-swipecards/ionic.swipecards.js?v=5">
+    </script>
+</head>
+<body  ng-app="dashboard-app" ng-controller='dashboardController' >
+<nav class="navbar navbar-inverse sticky-top navbar-light bg-light">
+  <div class="container-fluid row">
+    <div class="navbar-header">
+    </div>
+    <div "col-md-4 col-sm-4 col-xs-4 hidden-xs" style="padding:0px 0px;">
+      <ul class="nav navbar-right">
+        <li ng-class="{active:submenu=='false'}"><a href= "" ng-click = "SubmenuChooser('index')" style="color: white;"><p><b>Home</b></p></a></li>
+        <li ng-class="{active:submenu=='ShiftManagement'}">
+   
+          <a href= "" ng-click = "SubmenuChooser('ShiftManagement')" style="color:white; ">
+            <p><b>Shift Management</b></p></a>
+        </li>
+      </ul> 
+      <!-- <ul class="nav navbar-nav navbar-right ">
+             
+          <li ng-class="{active:submenu=='false'}"><a href= "" ng-click = "SubmenuChooser('index')" style="color: white;"><p><b>Home</b></p></a></li>
+          <li  ng-class="{active:submenu==false}"><a href= "" ng-click = "SubmenuChooser('ShiftManagement')" style="color: white; " ><p><b>ShiftManagement</b></p></a></li> 
+      </ul>   -->  
+    </div>
+  </div>
+</nav>
+<div ng-switch = "submenu" >
+  <div ng-switch-default>
+    <div class="padLeft">
+      <button class= 'btn btn-danger' ng-click ="submenuChooser('healthInput')"><span class="glyphicon glyphicon-alert"  ></span> Please click here to enter the data</button>
+    </div>
+    
+    <div class="container">
+      <div class="col-lg-6 col-sm-5" style="margin-top:20px;">
+              <div class="button-group">
+                
+               <select class="btn btn-default btn-sm dropdown-toggle col-lg-6 col-xs-10 col-xs-offset-1  col-lg-offset-0"  style="background-color:#22bea5;" ng-model="reportParams.machine" ng-options= "list.machine as list.machine for list in machinesList" ng-change="paramsChange()" ><span class="caret"></span>
+      </select>
+               <!-- <select class="btn btn-default btn-sm dropdown-toggle col-lg-6" data-toggle="dropdown" style="background-color:#22bea5;"> -->
+        <!-- <option ng-repeat="j in tableData.dates">{[{j}]}</option><span class="caret"></span> -->
+      <!-- </select>  -->
+             
+              </div>
+
+              <div class="form-group hidden-lg col-xs-12" >
+                <div id = "datetimepicker10"class='input-group'style="width:250px;margin-left:10px;margin-top:4px;">
+                    <input type='text' class="form-control"
+                          datepicker-popup="{[{format}]}"
+                          datepicker-options="dateOptions"
+                          show-weeks="'false'"
+                          ng-model="$parent.monthDate" 
+                          ng-change="paramsChange()"
+                          is-open="opened.start" 
+                          ng-click="start = !opened.start"
+                          max-date='model.endDate'
+                          ng-readonly='true'/>
+                    <span class="input-group-addon" for='start' 
+                          ng-click="opened.start = !opened.start; $event.stopPropagation()">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+              </div>
+              <div class="form-group col-lg-6 hidden-xs" >
+                <div id = "datetimepicker10"class='input-group'style="margin-left:8px;">
+                    <input type='text' class="form-control"
+                          datepicker-popup="{[{format}]}"
+                          datepicker-options="dateOptions"
+                          show-weeks="'false'"
+                          ng-model="$parent.monthDate" 
+                          ng-change="paramsChange()"
+                          is-open="opened.start" 
+                          ng-click="start = !opened.start"
+                          max-date='model.endDate'
+                          ng-readonly='true'/>
+                    <span class="input-group-addon" for='start' 
+                          ng-click="opened.start = !opened.start; $event.stopPropagation()">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+              </div>
+      </div>
+
+    
+      <!-- <div class="row"> -->
+          
+     <!-- </div> -->
+      <ul class="nav nav-tabs navbar-right" style="float:right;">
+        <li class="active hidden-xs" data-toggle="tab" href="#graph"><a>Graph</a></li>
+        <li data-toggle="tab" class="hidden-xs"href="#table" ng-click="GetTable()"><a>Table</a></li>
+      </ul>
+    </div>
+    <div >
+      <div id="graph" class="active" >
+        <div id="div1"></div>
+        <div ng-init = 'GetGraph()'> </div>
+      </div>
+      <div id="table" >
+        <div class="col-md-12 hidden-xs">
+        <ion-scroll zooming="true" direction="xy"style="width: 1200px; height: 300px">
+          
+          <table class="table table-striped table-bordered"style="margin-top:30px;">
+            <thead>
+              <tr>
+                <th>Indicator</th>
+                <th ng-repeat = "j in tableData.dates">{[{j}]}</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="i in tableData.tableValues">
+                  <td>
+                   {[{i.machine}]}
+                  </td>
+                  <td ng-repeat = "k in i.tableData" class= "alert-{[{k.mType}]}"> {[{k.actual}]}
+                  </td>
+                </tr>   
+            </tbody>
+          </table>
+        </ion-scroll> 
+                
+        </div>
+      </div>
+    
+    </div>
+  </div>
+  <div ng-switch-when="healthInput">
+     <div ng-include src="'{{ company_url }}healthInput/'" ></div> 
+  </div>
+  <div ng-switch-when="ShiftManagement">
+           <div ng-include src="'{{ company_url }}shiftManagementTemplate/'" ng-controller=' shiftManagementController'></div>
+  </div>
+</div>
+</body>
+</html>

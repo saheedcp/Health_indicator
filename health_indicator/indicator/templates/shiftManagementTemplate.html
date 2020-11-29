@@ -1,0 +1,29 @@
+<div class="col-lg-12 col-xs-12">
+<button id='back' class="fa fa-arrow-circle-o-left" ng-click = "submenuChooser('false')"></button>
+</div>
+<div class = "col-lg-offset-3 col-lg-9 col-md-12 col-sm-12 col-xs-12">
+
+    <a href="" ng-click="AddShift()" class="btn btn-default btn-sm btn-raised pull-left col-lg-1 col-md-1 col-sm-1 col-xs-2" style="background-color:#1abae5; height:30px; font-size:15px; font-family:arial; font-weight:normal; margin-left:1px; color:white; text-align:center;">Add</a>
+</div>
+<div class = "col-lg-offset-3 col-lg-6 col-md-12 col-sm-12 col-xs-12 all-borders" >
+    <div class="row" style="padding:10px 15px;">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 centerContent " style="font-family:arial; font-size:15px; color:white; background-color:#1abae5; font-weight:normal; margin-top:5px;padding:5px;">Shift</div>
+        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4" style="font-family:arial; font-size:15px; color:white; background-color:#1abae5; font-weight:normal; margin-top:5px;padding:5px;">StartTime</div>
+        <div class="col-lg-4  col-md-4 col-sm-4 col-xs-4 col-lg-4" style="font-family:arial; font-size:15px; color:white; background-color:#1abae5; font-weight:normal; margin-top:5px;padding:5px;">EndTime</div>
+        <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-4 centerContent " style="font-family:arial; font-size:15px; color:white; background-color:#1abae5; font-weight:normal;padding:0px; margin-top:5px;padding:5px;">Action</div>
+	</div>
+    <div class="row" style="padding-left:15px" ng-repeat="i in shiftList" >
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="font-family:arial; font-size:15px;  background-color:#fff; font-weight:normal;padding:0px;margin-top:5px;"><input ng-model= "i.shift" type="text" style="text-align:left; background-color:white;font-size:15px;  font-family:arial; padding:0px 15px;width: 100%;font-weight:normal;" placeholder="Enter Shift" class="form-control"></div>
+
+
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">  
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" uib-timepicker ng-model="i.startTime" show-spinners="false" ng-change="Changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" style="margin-top: 5px;"></div>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">  
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" uib-timepicker ng-model="i.endTime" show-spinners="false" ng-change="Changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" style="margin-top: 5px;"></div>
+        </div>
+        <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2 centerContent" style="font-family:Arial; font-size:15px; color:white; background-color:#fff; font-weight:normal;padding:0px;"><a href="" ng-click="DeleteShift(i)" class="btn btn-default form-control" style="font-family:Arial; background-color:rgba(255, 0, 0, 0.71); color:white;width:90%;margin-top:5px;margin-right:2px;padding:6px;">Delete</a></div>
+	</div>
+        <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2" style="font-family:Arial; font-size:15px; color:white; background-color:#fff; font-weight:normal;padding:15px 30px">
+         <a href="" ng-show="sBtn" ng-click="Submit()" class="btn btn-default btn-sm btn-raised pull-right" style="background-color:#1abae5; color:white; font-size:15px; height:30px; border-radius:5px; width:85px; margin-left:4px; margin-top:0px; font-family:arial;">Submit</a></div>
+</div>
